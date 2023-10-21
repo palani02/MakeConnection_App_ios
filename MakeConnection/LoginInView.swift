@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct LoginInView: View {
     @State var isLoginMode = false
     @State var email = ""
     @State var password = ""
@@ -46,34 +46,35 @@ struct ContentView: View {
                 
     //                Text("Here we build a Login Page")
                     
-                    if (isLoginMode==false){
+//                    if (isLoginMode==false){
+//                        Button{
+//                            
+//                        }label: {
+//                            HStack{
+//                                Spacer()
+//                                Text("Create Account")
+//                                    .foregroundStyle(.white)
+//                                    .padding(.vertical,13)
+//                                Spacer()
+//                            }.background(.blue)
+//                                .padding()
+//                    }
+//                }
+//                    if (isLoginMode==true){
                         Button{
-                            
+                            handleAction()
                         }label: {
                             HStack{
                                 Spacer()
-                                Text("Create Account")
+                                Text(isLoginMode ? "Log In" : "Create Account")
                                     .foregroundStyle(.white)
                                     .padding(.vertical,13)
+                                    .font(.system(size: 20))
                                 Spacer()
                             }.background(.blue)
                                 .padding()
                     }
-                }
-                    if (isLoginMode==true){
-                        Button{
-                            
-                        }label: {
-                            HStack{
-                                Spacer()
-                                Text("Log In")
-                                    .foregroundStyle(.white)
-                                    .padding(.vertical,13)
-                                Spacer()
-                            }.background(.blue)
-                                .padding()
-                    }
-                }
+//                }
                     
 //                .padding()
                 }
@@ -84,10 +85,16 @@ struct ContentView: View {
         .padding()
         .background(Color(.init(white: 0, alpha: 0.05)))
 //        .background(.gray)
-        
+    }
+    private func handleAction(){
+        if isLoginMode{
+            print("Successfully Login into the exsisting Credential")
+        }else{
+            print("Add New User into the firebase database and store the image")
+        }
     }
 }
 
 #Preview {
-    ContentView()
+    LoginInView()
 }
