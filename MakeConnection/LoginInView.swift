@@ -105,15 +105,33 @@ struct LoginInView: View {
     }
     private func handleAction(){
         if isLoginMode{
-            print("Successfully Login into the exsisting Credential")
+//            print("Successfully Login into the exsisting Credential")
+            LoginAccount()
         }else{
 //            print("Added New User into the firebase database and store the image")
             CreateNewAccount()
         }
     }
+    // this state var is to store the current state scenarios
     @State var isLoginStatus = ""
     @State var flag = 0
     
+    // this function is to authenticate the user and check the user is already exsist or new one.
+    
+    private func LoginAccount(){
+        Auth.auth().signIn(withEmail: email, password: password) { result, err in
+            if let err = err{
+                print("Login Error! Please check Your Password")
+                self.isLoginStatus = "Login Error! Please check Your Password"
+                flag = 0
+            }else{
+                print("Successfully Login.")
+                self.isLoginStatus = "Sucessfully Login into a Account"
+                flag = 1
+            }
+            
+        }
+    }
     private func CreateNewAccount(){
         Auth.auth().createUser(withEmail: email, password: password) { res, err in
             if let err = err {
