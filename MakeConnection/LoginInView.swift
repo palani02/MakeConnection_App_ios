@@ -8,13 +8,23 @@
 import SwiftUI
 import Firebase
 
+class FirebaseManager : NSObject{
+    let auth : Auth
+    static let shared = FirebaseManager()
+    
+    override init(){
+        FirebaseApp.configure()
+        self.auth = Auth.auth()
+        super.init()
+    }
+}
 struct LoginInView: View {
     @State var isLoginMode = false
     @State var email = ""
     @State var password = ""
-    
+    @State var showImagePicker = false
     init(){
-        FirebaseApp.configure()
+//        FirebaseApp.configure()
     }
     
     var body: some View {
@@ -32,7 +42,7 @@ struct LoginInView: View {
                     .padding()
                     if !isLoginMode{
                         Button{
-                            
+                            showImagePicker.toggle()
                         }label: {
                             Image(systemName: "person.fill")
                                 .font(.system(size: 100))
@@ -98,9 +108,13 @@ struct LoginInView: View {
             }
             .navigationTitle(isLoginMode ? "Log In":"Create Account")
             .background(Color(.init(white: 0, alpha: 0.05)))
+            
         }
         .padding()
         .background(Color(.init(white: 0, alpha: 0.05)))
+        .fullScreenCover(isPresented: $showImagePicker, onDismiss: nil){
+            Text("Choose the Image")
+        }
 //        .background(.gray)
     }
     private func handleAction(){
@@ -121,7 +135,7 @@ struct LoginInView: View {
     private func LoginAccount(){
         Auth.auth().signIn(withEmail: email, password: password) { result, err in
             if let err = err{
-                print("Login Error! Please check Your Password")
+                print("Login Error! Please check Your Password",err)
                 self.isLoginStatus = "Login Error! Please check Your Password"
                 flag = 0
             }else{
