@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E336E0AC2AE5319100DF4018 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E336E0AB2AE5319100DF4018 /* GoogleService-Info.plist */; };
+		E336E0AE2AE5A3A800DF4018 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E336E0AD2AE5A3A800DF4018 /* ImagePicker.swift */; };
 		E36CBF9D2AE4E774009C01F6 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36CBF9C2AE4E774009C01F6 /* LoginPage.swift */; };
 		E36CBFA02AE52CF0009C01F6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E36CBF9F2AE52CF0009C01F6 /* FirebaseAuth */; };
 		E36CBFA22AE52CF0009C01F6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E36CBFA12AE52CF0009C01F6 /* FirebaseStorage */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		E336E0AB2AE5319100DF4018 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E336E0AD2AE5A3A800DF4018 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E36CBF9C2AE4E774009C01F6 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 		E390F0CE2AE3F8990040F90F /* MakeConnection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeConnection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E390F0D12AE3F8990040F90F /* MakeConnectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeConnectionApp.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				E390F0D12AE3F8990040F90F /* MakeConnectionApp.swift */,
+				E336E0AD2AE5A3A800DF4018 /* ImagePicker.swift */,
 				E390F0D32AE3F8990040F90F /* LoginInView.swift */,
 				E336E0AB2AE5319100DF4018 /* GoogleService-Info.plist */,
 				E390F0D52AE3F89A0040F90F /* Assets.xcassets */,
@@ -276,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E390F0D42AE3F8990040F90F /* LoginInView.swift in Sources */,
+				E336E0AE2AE5A3A800DF4018 /* ImagePicker.swift in Sources */,
 				E36CBF9D2AE4E774009C01F6 /* LoginPage.swift in Sources */,
 				E390F0D22AE3F8990040F90F /* MakeConnectionApp.swift in Sources */,
 			);

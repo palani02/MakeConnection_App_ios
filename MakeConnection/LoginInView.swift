@@ -23,6 +23,7 @@ struct LoginInView: View {
     @State var email = ""
     @State var password = ""
     @State var showImagePicker = false
+//    @State var image = UIImage?.self
     init(){
 //        FirebaseApp.configure()
     }
@@ -113,10 +114,14 @@ struct LoginInView: View {
         .padding()
         .background(Color(.init(white: 0, alpha: 0.05)))
         .fullScreenCover(isPresented: $showImagePicker, onDismiss: nil){
-            Text("Choose the Image")
+//            Text("Choose the Image")
+            ImagePicker(image: $image)
         }
 //        .background(.gray)
+        
     }
+    @State var image: UIImage?
+  
     private func handleAction(){
         if isLoginMode{
 //            print("Successfully Login into the exsisting Credential")
