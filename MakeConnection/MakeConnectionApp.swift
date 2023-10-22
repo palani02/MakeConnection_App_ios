@@ -11,7 +11,7 @@ import SwiftUI
 struct MakeConnectionApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginInView()
         }
     }
 }

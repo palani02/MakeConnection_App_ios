@@ -6,17 +6,11 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct LoginInView: View {
     @State var isLoginMode = false
     @State var email = ""
     @State var password = ""
-    
-    init(){
-        FirebaseApp.configure()
-    }
-    
     var body: some View {
         NavigationView{
             ScrollView{
@@ -79,17 +73,6 @@ struct LoginInView: View {
                                 Spacer()
                             }.background(.blue)
                                 .padding()
-//                            Text(self.isLoginStatus)
-//                                .foregroundColor(.green)
-                    }
-                    if flag == 1 {
-                        Text(self.isLoginStatus)
-                         .foregroundColor(.green)
-                         .font(.system(size: 20))
-                    }else{
-                        Text(self.isLoginStatus)
-                            .foregroundColor(.red)
-                            .font(.system(size: 20))
                     }
 //                }
                     
@@ -107,25 +90,7 @@ struct LoginInView: View {
         if isLoginMode{
             print("Successfully Login into the exsisting Credential")
         }else{
-//            print("Added New User into the firebase database and store the image")
-            CreateNewAccount()
-        }
-    }
-    @State var isLoginStatus = ""
-    @State var flag = 0
-    
-    private func CreateNewAccount(){
-        Auth.auth().createUser(withEmail: email, password: password) { res, err in
-            if let err = err {
-                print("Failed To Create New Account",err)
-                self.isLoginStatus = "Failed to Create a User. Because the users Mail is Already Available!!. Try to Login"
-                self.flag = 0
-            }else{
-                print("Successfully Created New User Account")
-                self.isLoginStatus = "Account Was Successfully Created."
-                self.flag = 1
-                
-            }
+            print("Add New User into the firebase database and store the image")
         }
     }
 }
