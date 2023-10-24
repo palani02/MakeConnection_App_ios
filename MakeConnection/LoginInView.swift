@@ -45,9 +45,21 @@ struct LoginInView: View {
                         Button{
                             showImagePicker.toggle()
                         }label: {
-                            Image(systemName: "person.fill")
-                                .font(.system(size: 100))
-                                .padding()
+                            VStack{
+                                if let image = self.image
+                                {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 150,height: 150)
+                                        .cornerRadius(110)
+                                } else {
+                                    Image(systemName: "person.fill")
+                                        .font(.system(size: 100))
+                                        .padding()
+                                }
+                            }
+                            .border(Color.black, width:3)
                         }
                     }
                     Group{
@@ -138,7 +150,7 @@ struct LoginInView: View {
     // this function is to authenticate the user and check the user is already exsist or new one.
     
     private func LoginAccount(){
-        Auth.auth().signIn(withEmail: email, password: password) { result, err in
+        FirebaseManager.shared.auth.signIn(withEmail: email, password: password) { result, err in
             if let err = err{
                 print("Login Error! Please check Your Password",err)
                 self.isLoginStatus = "Login Error! Please check Your Password"
@@ -152,7 +164,7 @@ struct LoginInView: View {
         }
     }
     private func CreateNewAccount(){
-        Auth.auth().createUser(withEmail: email, password: password) { res, err in
+        FirebaseManager.shared.auth.createUser(withEmail: email, password: password) { res, err in
             if let err = err {
                 print("Failed To Create New Account",err)
                 self.isLoginStatus = "Failed to Create a User. Because the users Mail is Already Available!!. Try to Login"
